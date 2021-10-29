@@ -38,7 +38,7 @@ namespace Game
 
         public override string ToString()
         {
-            return "Монстр " + name + " сила: " + power + " здоровье: " + heals;
+            return base.ToString() + ": " + name + " сила: " + power + " здоровье: " + heals;
         }
 
         public void Passport()
@@ -48,24 +48,33 @@ namespace Game
 
         public void Attack(object B)
         {
+            int b1 = 1, b2 = 1;
+            if (this is Demon)
+                b1 = ((Demon)this).Brain;
+            if (B is Demon)
+                b2 = ((Demon)B).Brain;
+
             if(this.power > ((Monster)B).power)
             {
-                ((Monster)B).heals -= this.power;
+                ((Monster)B).heals -= this.power/b2;
                 this.power += 10;
+                Console.WriteLine("Победил " + this.name);
             }
-            if(this.power < ((Monster)B).power)
+            if (this.power < ((Monster)B).power)
             {
-                this.heals -= ((Monster)B).power;
+                this.heals -= ((Monster)B).power / b1;
                 ((Monster)B).power += 10;
-
+                Console.WriteLine("Победил " + ((Monster)B).name);
             }
+            else
+                Console.WriteLine("Ничья!");
         }
 
-        public bool Diw()
+        public bool Die()
         {
             if (this.heals <=0 )
             {
-                Console.WriteLine("Монстр "+ name + " умер...");
+                Console.WriteLine(base.ToString() + ": " + name + " умер...");
                 return true;
             }
             else

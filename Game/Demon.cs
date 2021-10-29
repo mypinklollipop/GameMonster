@@ -15,9 +15,22 @@ namespace Game
             this.brain = brain;
         }
 
-        public Demon(string name, int brain) : base(name)
+        public Demon(string name) : base(name)
         {
-            this.brain = rnd.Next(1, 5);
+            this.brain = rnd.Next(1, 6);
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + " ум: " + brain;
+        }
+
+        public int Brain
+        {
+            get
+            {
+                return brain;
+            }
         }
     }
 }
