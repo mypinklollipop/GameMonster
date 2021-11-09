@@ -55,10 +55,7 @@ namespace Game
                 V.Passport();
                 stado[i].Passport();
                 if (V.Die())
-                {
                     Console.WriteLine("Игра окончена! Вы проиграли!");
-                    break;
-                }
             }
         }
     }
