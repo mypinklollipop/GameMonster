@@ -10,16 +10,21 @@ namespace Game
     {
         static void Main(string[] args)
         {
-            Monster M1 = new Monster("Вася", 65, 300);
-            Demon D1 = new Demon("Маша");
-            M1.Passport();
-            D1.Passport();
-            Console.WriteLine("Сражение началось!");
-            Console.WriteLine("Сражается монстр " + M1.Name + " с монстром " + D1.Name);
-            M1.Attack(D1);
-            M1.Passport();
-            D1.Passport();
+            Monster Vasya = new Monster("Вася");
+            Stado S = new Stado();
 
+            S.Add(new Demon("Маша"));
+            S.Add(new Monster("Дракон"));
+            S.Add(new Demon("Халк"));
+
+            Vasya.Passport();
+            do
+            {
+                Console.WriteLine("СЕАНС ИГРЫ");
+                S.Game(Vasya);
+                S.Remove();
+            } while (S.Size > 0 && !Vasya.Die());
+            S.Game(Vasya);
 
             Console.ReadKey();
         }

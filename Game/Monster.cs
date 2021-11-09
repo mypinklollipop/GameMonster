@@ -60,6 +60,7 @@ namespace Game
                 this.power += 10;
                 Console.WriteLine("Победил " + this.name);
             }
+            else
             if (this.power < ((Monster)B).power)
             {
                 this.heals -= ((Monster)B).power / b1;
@@ -68,6 +69,7 @@ namespace Game
             }
             else
                 Console.WriteLine("Ничья!");
+            Console.WriteLine();
         }
 
         public bool Die()
